@@ -60,7 +60,7 @@ Prior to JSR 376 there was JSR 277 (June 2005)
 
 > Oracle is planning to remove sun.misc.Unsafe in Java 9. This is an absolute disaster in the making and has the potential to completely destroy the entire ecosystem around Java.
 
-_[dripstat.com](http://blog.dripstat.com/removal-of-sun-misc-unsafe-a-disaster-in-the-making/) 2015_
+[dripstat.com](http://blog.dripstat.com/removal-of-sun-misc-unsafe-a-disaster-in-the-making/) 2015
 
 ---
 
@@ -71,21 +71,13 @@ _[dripstat.com](http://blog.dripstat.com/removal-of-sun-misc-unsafe-a-disaster-i
 ---
 ### Potential issues
 
-*JDK structure has changed*
-
-rt.jar and tools.jar are gone
-
-*new convention for version number string*
-
-Java version numbers currently use the format *1.8.0_131*, Java 9 uses the more logical *9* which will be better in the long run. In the meantime there's code out there that uses `System.getProperty("java.version");` and expects the old style.
-
-*Split packages*
-
-more on this later
+ - JDK structure has changed (rt.jar and tools.jar are gone)
+ - Change to version number string. Code that uses `System.getProperty("java.version");` and expects the old style may end up broken
+ - Split packages
 
 ---?code=JdkVersion.java&lang=java
 
 ---
 
 
-# Hello Jigsaw
+# Lets do some demos
