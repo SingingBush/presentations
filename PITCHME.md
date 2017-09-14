@@ -3,10 +3,11 @@
 
 
 
-_Senior Developer - Hermes_
+
+_Samael Bate Senior Developer @ Hermes_
 
 ---
-## Other Talks/Articles
+### Other Talks/Articles
 
  - Mark Reinhold (Oracle) "Make Way for Modules!"
  - Trisha Gee (Jetbrains) "Real World Java 9"
@@ -17,7 +18,7 @@ _Senior Developer - Hermes_
  - Baeldung [Java 9 New Features](http://www.baeldung.com/new-java-9) August 2017
 
 ---
-## (some) other JDK 9 features
+### (some) other JDK 9 features
 
  - Jigsaw (JSR 376modules)
  - Reactive Streams API (JEP266 standard Publisher/Subscriber/Subscription interfaces)
@@ -39,7 +40,7 @@ _Senior Developer - Hermes_
 Check out https://docs.oracle.com/javase/9/whatsnew/toc.htm
 
 ---
-## Some History
+### Some History
 
 The module system we're getting in Java 9 (JSR 376: Java Platform Module System) has been a long time in the making.
 
@@ -48,39 +49,43 @@ It was originally planned for Java 7.
 Prior to JSR 376 there was JSR 277 (June 2005)
 
 ---
-## Why should we care?
+### Why should we care?
 
  - encapsulation
  - even if you don't use modules, the fact that the JDK itself is modularised means that functionality that is not intended for use will not be accessible by default. 
  - jlink
 
 ---
-## Fear, Uncertainty and Doubt
+### Fear, Uncertainty and Doubt
 
 > Oracle is planning to remove sun.misc.Unsafe in Java 9. This is an absolute disaster in the making and has the potential to completely destroy the entire ecosystem around Java.
+
 _[dripstat.com](http://blog.dripstat.com/removal-of-sun-misc-unsafe-a-disaster-in-the-making/) 2015_
 
 ---
 
 
-# Lets see if a modular JDK breaks Spring
+### Lets see if a modular JDK breaks Spring
 
 
 ---
-## Potential issues
+### Potential issues
 
-### JDK structure has changed
+*JDK structure has changed*
 
 rt.jar and tools.jar are gone
 
-### new convention for version number string
+*new convention for version number string*
 
 Java version numbers currently use the format *1.8.0_131*, Java 9 uses the more logical *9* which will be better in the long run. In the meantime there's code out there that uses `System.getProperty("java.version");` and expects the old style.
 
-### Split packages
+*Split packages*
 
 more on this later
 
 ---?code=JdkVersion.java&lang=java
+
+---
+
 
 # Hello Jigsaw
