@@ -1,8 +1,5 @@
 
-# Jigsaw - putting the pieces together
-
-
-
+## Jigsaw - putting the pieces together
 
 _Samael Bate Senior Developer @ Hermes_
 
