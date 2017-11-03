@@ -12,6 +12,7 @@ _Samael Bate Senior Developer @ Hermes_
  - Jeff Hanson [Modularity in Java 9: Stacking up with Project Jigsaw, Penrose, and OSGi](https://www.javaworld.com/article/2878952/java-platform/modularity-in-java-9.html) 2015 
  - Mike Hearn [Is Jigsaw good or is it wack?](https://blog.plan99.net/is-jigsaw-good-or-is-it-wack-ec634d36dd6f) April 2017
  - Tomer Ben David [Java 9: Step by Step From Zero to Modules](https://dzone.com/articles/java-9-tutorial-step-by-step-from-zero-to-modules) April 2017
+ - Simon Ritter [JDK 9: Pitfalls For The Unwary](https://www.azul.com/jdk-9-pitfalls-for-the-unwary/) July 2017
  - Baeldung [Java 9 New Features](http://www.baeldung.com/new-java-9) August 2017
 
 ---
