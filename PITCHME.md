@@ -51,7 +51,7 @@ Prior to JSR 376 there was JSR 277 (June 2005)
 
  - encapsulation
  - even if you don't use modules, the fact that the JDK itself is modularised means that functionality that is not intended for use will not be accessible by default. 
- - jlink
+ - jlink (more on this later)
 
 ---
 ### Fear, Uncertainty and Doubt
@@ -61,21 +61,69 @@ Prior to JSR 376 there was JSR 277 (June 2005)
 [dripstat.com](http://blog.dripstat.com/removal-of-sun-misc-unsafe-a-disaster-in-the-making/) 2015
 
 ---
-
-
-### Lets see if a modular JDK breaks Spring
-
-
----
 ### Potential issues
 
  - JDK structure has changed (rt.jar and tools.jar are gone)
+ - API's for things like JAXB (xml binding) and JAX-WS (web service) aren't on classpath by default
  - Change to version number string. Code that uses `System.getProperty("java.version");` and expects the old style may end up broken
- - Split packages
+ - When using modules Java 9 does not allow split packages (identical packages in multiple modules)
 
 ---?code=JdkVersion.java&lang=java
 
 ---
+### Why am I getting ClassNotFoundException?
+
+In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and Java EE are not resolved by default when you compile or run code on the class path. These are:
+
+ - *java.corba* — CORBA
+ - *java.transaction* — The subset of the Java Transaction API defined by Java SE to support CORBA Object Transaction Services
+ - *java.activation* — JavaBeans Activation Framework
+ - *java.xml.bind* — Java Architecture for XML Binding (JAXB)
+ - *java.xml.ws* — Java API for XML Web Services (JAX-WS), Web Services Metadata for the Java Platform, and SOAP with Attachments for Java (SAAJ)
+ - *java.xml.ws.annotation* — The subset of the JSR-250 Common Annotations defined by Java SE to support web services
+
+using the *java.se.ee* aggregate module as a temporary workaround would add all the above (it's not recommended though). They are marked as `@Deprecated(forRemoval=true)` and could be gone by the next major release (next year).
+
+---
+### potential workarounds
+
+ - `--add-modules java.xml.bind,java.transaction` can be used to packages back on the classpath
+ - `--illegal-access=permit` (permit [jdk9 default], warn, debug, deny [future default]) allow illegal reflective access
+from code on the class path 
+ - `--patch-module` override classes in a module / augment the contents of module
+ - If you still want to compile on JDK 8, use `-XX:+IgnoreUnrecognizedVMOptions` along with newer args
+ - loads more, read the docs
+
+These should only be used as temporary workarounds, moving forward we should make modules.
+
+---
 
 
-# Lets do some demos
+### Lets see if the modular JDK breaks Spring
+
+---
+# Spring
+
+ - Spring 4: depending on what you're using will require various amounts of effort 
+ - Spring 5: is Java 9 (both module- and classpaths) ready out of the box
+
+---
+
+
+# Lets do some code
+
+---
+# Maven
+
+ - Standard maven plugins are generally ok but anything else you could be stuck
+ - use Maven >= 3.5.0
+ - maven-jar-plugin >= 3.0.2
+ - maven-compile-plugin >= 3.7.0
+ - in the _spring-boot-maven-plugin_ use `<jvmArguments>--add-modules java.xml.bind --illegal-access=permit</jvmArguments>`
+
+---
+# Gradle
+
+ - Standard gradle plugins are generally ok but anything else you could be stuck
+ - gradle users may have it easier due to the way that a build file is Groovy (or Kotlin) so it's easier to do custom steps
+ - Chainsaw plugin (fork of gradle-java-modules plugin) shows a lot of promise
