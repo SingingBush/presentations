@@ -24,12 +24,17 @@ _Samael Bate Senior Developer @ Hermes_
  - G1 will be default garbage collector (JEP 248)
  - Various new convenience methods for streams, collections, etc
  - HTTP/2 and websockets (JEP 110 jdk.incubator.http)
+ - ...
+
+---
  - Multi release jars (libraries that work with older JDK while also supporting newer features when being used with JDK 9)
  - Compact Strings (JEP 254 use byte array instead of char array)
  - Javadoc (is now HTML5 with search box)
  - Nashorn improvements (JEP 236: jdk.nashorn.api.tree)
  - GTK3 on Linux (with system property jdk.gtk.version)
  - Platform specific features (JEP 272 interact with taskbar/docks or listen for system/application events)
+ - ...
+---
  - Process API updates (JEP 102)
  - Internationalization (JEP 267 adds Unicode 8.0 support & JEP 226 makes property files UTF-8)
  - Images (javax.imageio.plugins.tiff)
@@ -85,6 +90,7 @@ In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and 
 ---
 
 using the *java.se.ee* aggregate module as a temporary workaround would add all the modules on previous slide (it's not recommended though).
+
 
 They are marked as `@Deprecated(forRemoval=true)` and could be gone by the next major release (next year).
 
