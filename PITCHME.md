@@ -73,8 +73,9 @@ Prior to JSR 376 there was JSR 277 (June 2005)
 ---
 ### Why am I getting ClassNotFoundException?
 
-In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and Java EE are not resolved by default when you compile or run code on the class path. These are:
+In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and Java EE are not resolved by default when you compile or run code on the class path. These are...
 
+---
  - *java.corba* — CORBA
  - *java.transaction* — The subset of the Java Transaction API defined by Java SE to support CORBA Object Transaction Services
  - *java.activation* — JavaBeans Activation Framework
