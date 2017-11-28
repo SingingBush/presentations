@@ -84,14 +84,14 @@ In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and 
 - *java.xml.ws.annotation* — subset of the JSR-250 Common Annotations to support web services
 ---
 
-using the *java.se.ee* aggregate module as a temporary workaround would add all the modules on previous slide (it's not recommended though). They are marked as `@Deprecated(forRemoval=true)` and could be gone by the next major release (next year).
+using the *java.se.ee* aggregate module as a temporary workaround would add all the modules on previous slide (it's not recommended though).
+
+They are marked as `@Deprecated(forRemoval=true)` and could be gone by the next major release (next year).
 
 ---
 ### potential workarounds
 
  - `--add-modules java.xml.bind,java.transaction` can be used to packages back on the classpath
- - `--illegal-access=permit` (permit [jdk9 default], warn, debug, deny [future default]) allow illegal reflective access
-from code on the class path 
  - If you still want to compile on JDK 8, use `-XX:+IgnoreUnrecognizedVMOptions` along with newer args
  - loads more, read the docs
 
@@ -103,18 +103,18 @@ These should only be used as temporary workarounds, moving forward we should mak
 ### Lets see if the modular JDK breaks Spring
 
 ---
-# Spring
+### Spring
 
- - Spring 4: depending on what you're using will require various amounts of effort 
- - Spring 5: is Java 9 (both module- and classpaths) ready out of the box
-
----
-
-
-# Lets do some code
+ - v4: depending on what you're using will require various amounts of effort 
+ - v5: is Java 9 (both module- and classpaths) ready out of the box
 
 ---
-# Maven
+
+
+### Lets do some code
+
+---
+### Maven
 
  - Standard maven plugins are generally ok but anything else you could be stuck
  - use Maven >= 3.5.0
@@ -123,8 +123,13 @@ These should only be used as temporary workarounds, moving forward we should mak
  - in the _spring-boot-maven-plugin_ use `<jvmArguments>--add-modules java.xml.bind --illegal-access=permit</jvmArguments>`
 
 ---
-# Gradle
+### Gradle
 
  - Standard gradle plugins are generally ok but anything else you could be stuck
  - gradle users may have it easier due to the way that a build file is Groovy (or Kotlin) so it's easier to do custom steps
  - Chainsaw plugin (fork of gradle-java-modules plugin) shows a lot of promise
+
+---
+
+
+### opinions anyone?
