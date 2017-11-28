@@ -76,12 +76,12 @@ Prior to JSR 376 there was JSR 277 (June 2005)
 In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and Java EE are not resolved by default when you compile or run code on the class path. These are...
 
 ---
- - *java.corba* — CORBA
- - *java.transaction* — The subset of the Java Transaction API defined by Java SE
- - *java.activation* — JavaBeans Activation Framework
- - *java.xml.bind* — Java Architecture for XML Binding (JAXB)
- - *java.xml.ws* — Java API for XML Web Services (JAX-WS)
- - *java.xml.ws.annotation* — subset of the JSR-250 Common Annotations defined by Java SE to support web services
+*java.corba* — CORBA
+*java.transaction* — The subset of the Java Transaction API defined by Java SE
+*java.activation* — JavaBeans Activation Framework
+*java.xml.bind* — Java Architecture for XML Binding (JAXB)
+*java.xml.ws* — Java API for XML Web Services (JAX-WS)
+*java.xml.ws.annotation* — subset of the JSR-250 Common Annotations to support web services
 
 using the *java.se.ee* aggregate module as a temporary workaround would add all the above (it's not recommended though). They are marked as `@Deprecated(forRemoval=true)` and could be gone by the next major release (next year).
 
