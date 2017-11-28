@@ -6,7 +6,7 @@ _Samael Bate Senior Developer @ Hermes_
 ---
 ### Other Talks/Articles
 
- - Mark Reinhold (Oracle) "Make Way for Modules!"
+ - Mark Reinhold (Oracle) "Make Way for Modules!" and [Modules in One Lesson](https://www.youtube.com/watch?v=rFhhLXcOBsk)
  - Trisha Gee (Jetbrains) "Real World Java 9"
  - Pepper Lebeck-Jobe [Building Java 9 Modules](https://guides.gradle.org/building-java-9-modules/)
  - Jeff Hanson [Modularity in Java 9: Stacking up with Project Jigsaw, Penrose, and OSGi](https://www.javaworld.com/article/2878952/java-platform/modularity-in-java-9.html) 2015 
@@ -40,6 +40,7 @@ _Samael Bate Senior Developer @ Hermes_
  - Images (javax.imageio.plugins.tiff)
  - Stack Walking (JEP 259)
 
+
 Check out https://docs.oracle.com/javase/9/whatsnew/toc.htm
 
 ---
@@ -54,7 +55,7 @@ Prior to JSR 376 there was JSR 277 (June 2005)
 ---
 ### Why should we care?
 
- - encapsulation
+ - encapsulation (modules prevent access via reflection, unless *opens* is used in module-info)
  - even if you don't use modules, the fact that the JDK itself is modularised means that functionality that is not intended for use will not be accessible by default. 
  - jlink (more on this later)
 
@@ -118,6 +119,11 @@ These should only be used as temporary workarounds, moving forward we should mak
 
 
 ### Lets do some code
+
+---
+### Java has a new class
+
+`java.lang.Module` which means we can do `this.getClass().getModule()`
 
 ---
 ### Maven
