@@ -77,11 +77,11 @@ In JDK 9, the modules that contain CORBA or the APIs shared between Java SE and 
 
 ---
  - *java.corba* — CORBA
- - *java.transaction* — The subset of the Java Transaction API defined by Java SE to support CORBA Object Transaction Services
+ - *java.transaction* — The subset of the Java Transaction API defined by Java SE
  - *java.activation* — JavaBeans Activation Framework
  - *java.xml.bind* — Java Architecture for XML Binding (JAXB)
- - *java.xml.ws* — Java API for XML Web Services (JAX-WS), Web Services Metadata for the Java Platform, and SOAP with Attachments for Java (SAAJ)
- - *java.xml.ws.annotation* — The subset of the JSR-250 Common Annotations defined by Java SE to support web services
+ - *java.xml.ws* — Java API for XML Web Services (JAX-WS)
+ - *java.xml.ws.annotation* — subset of the JSR-250 Common Annotations defined by Java SE to support web services
 
 using the *java.se.ee* aggregate module as a temporary workaround would add all the above (it's not recommended though). They are marked as `@Deprecated(forRemoval=true)` and could be gone by the next major release (next year).
 
@@ -91,7 +91,6 @@ using the *java.se.ee* aggregate module as a temporary workaround would add all 
  - `--add-modules java.xml.bind,java.transaction` can be used to packages back on the classpath
  - `--illegal-access=permit` (permit [jdk9 default], warn, debug, deny [future default]) allow illegal reflective access
 from code on the class path 
- - `--patch-module` override classes in a module / augment the contents of module
  - If you still want to compile on JDK 8, use `-XX:+IgnoreUnrecognizedVMOptions` along with newer args
  - loads more, read the docs
 
