@@ -116,7 +116,26 @@ These should only be used as temporary workarounds, moving forward we should mak
  - v5: is Java 9 (both module- and classpaths) ready out of the box
 
 ---
+### add a module-info.java
 
+```
+module com.domain.service {
+    requires com.domain.service;
+
+    requires transitive some.other.thing;
+
+    exports com.domain.stuff.service;
+
+    provides com.domain.service.EventService with com.domain.stuff.service.StuffService;
+}
+```
+
+---
+### automatic modules
+
+slf4j-api-1.7.25.jar becomes slf4j.api
+
+---
 
 ### Lets do some code
 
@@ -140,6 +159,24 @@ These should only be used as temporary workarounds, moving forward we should mak
  - Standard gradle plugins are generally ok but anything else you could be stuck
  - gradle users may have it easier due to the way that a build file is Groovy (or Kotlin) so it's easier to do custom steps
  - Chainsaw plugin (fork of gradle-java-modules plugin) shows a lot of promise
+
+---
+### build.gradle
+
+```
+test {
+    inputs.property("moduleName", moduleName)
+    doFirst {
+        jvmArgs = [
+            '--module-path', classpath.asPath, 
+            '--add-modules', 'ALL-MODULE-PATH', 
+            '--add-reads', "$moduleName=junit", 
+            '--patch-module', "$moduleName=" + files(sourceSets.test.java.outputDir).asPath, 
+        ]
+        classpath = files()
+    }
+}
+```
 
 ---
 
